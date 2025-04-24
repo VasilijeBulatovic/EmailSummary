@@ -2,15 +2,14 @@ import requests
 from datetime import datetime, timedelta
 import re
 
-# Replace with your OpenRouter API key
+
 api_key = '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'
 
-# Path to your input and output files
+
 input_file_path = 'email.txt'
 output_file_path = 'final.txt'
 
-# Read the content of the email.txt file
-# Function to check if the email date is within the last 24 hours
+
 def is_recent(date_str):
     try:
         email_time = datetime.strptime(date_str, '%b %d, %Y, %I:%M %p')
@@ -20,7 +19,6 @@ def is_recent(date_str):
         print("Date parsing error:", e)
         return False
 
-# Read and filter recent emails
 recent_emails = []
 with open(input_file_path, 'r', encoding='utf-8') as file:
     email_blocks = file.read().split('\n\nBody:')
@@ -32,19 +30,19 @@ with open(input_file_path, 'r', encoding='utf-8') as file:
             if is_recent(date_str):
                 recent_emails.append(block.strip())
 
-# If no recent emails, exit early
+
 if not recent_emails:
     print("No emails from the last 24 hours.")
     exit()
 
-# Join recent emails into a single string
+
 email_content = '\n\n'.join(recent_emails)
 
 
-# Define the OpenRouter API endpoint for summarization
+
 url = 'https://openrouter.ai/api/v1/chat/completions'
 
-# Define the payload for summarizing the email content
+
 payload = {
     "model": "nvidia/llama-3.1-nemotron-nano-8b-v1:free",
     "messages": [
@@ -53,31 +51,31 @@ payload = {
     ]
 }
 
-# Define the headers with your API key
+
 headers = {
     'Authorization': f'Bearer {api_key}',
     'Content-Type': 'application/json'
 }
 
-# Send the request to the API
+
 response = requests.post(url, json=payload, headers=headers)
 response_data = response.json()
 # print(response_data)
 
-# Check if the response is successful
+
 if response.status_code == 200:
-    # Check if 'choices' is in the response before accessing it
+    
     if 'choices' in response_data:
         summarized_content = response_data['choices'][0]['message']['content']
         cleaned_content = summarized_content.replace('*', '').replace('\u2061', '').strip()
 
-        # Write to final.txt
+        
         with open(output_file_path, 'w', encoding='utf-8') as output_file:
             output_file.write(cleaned_content)
         print("Summary saved to final.txt.")
     else:
         print("Error: 'choices' key not found in the response.")
-        print("Response content:", response_data)  # Print the full response content for debugging
+        print("Response content:", response_data)
 else:
     print(f"Failed to summarize the email. Status code: {response.status_code}")
-    print("Response text:", response.text)  # Print the error response text
+    print("Response text:", response.text) 
