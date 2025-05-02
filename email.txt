@@ -2,7 +2,7 @@
 
 From: GitHub noreply@github.com
 To: vbulatovic1 vasilije.bulatovic3@gmail.com
-Date: Apr 23, 2025, 8:28 PM
+Date: May 1, 2025, 8:28 PM
 Subject: GitHub Copilot: What’s in your free plan 🤖
 Mailed-by: github.com
 Signed-by: github.com
@@ -19,7 +19,7 @@ The GitHub Team
 
 From: TechTalk Inc. contact@techtalk.com
 To: vbulatovic1 vasilije.bulatovic3@gmail.com
-Date: Apr 23, 2025, 8:29 PM
+Date: May 1, 2025, 8:29 PM
 Subject: Your Monthly Newsletter: Latest Trends in AI and Tech
 Mailed-by: techtalk.com
 Signed-by: techtalk.com
@@ -37,7 +37,7 @@ The TechTalk Team
 
 From: DigitalSolutions support@digitalsolutions.com
 To: vbulatovic1 vasilije.bulatovic3@gmail.com
-Date: Apr 18, 2025, 8:30 PM
+Date: May 1, 2025, 8:30 PM
 Subject: Your Digital Solutions Support Request
 Mailed-by: digitalsolutions.com
 Signed-by: digitalsolutions.com
@@ -55,7 +55,7 @@ Digital Solutions Support Team
 
 From: HRTech Solutions hr@hrtechsolutions.com
 To: vbulatovic1 vasilije.bulatovic3@gmail.com
-Date: Apr 23, 2025, 8:31 PM
+Date: May 1, 2025, 8:31 PM
 Subject: Transform Your HR Strategy with AI
 Mailed-by: hrtechsolutions.com
 Signed-by: hrtechsolutions.com
@@ -73,7 +73,7 @@ HRTech Solutions Team
 
 From: InnovateAI info@innovate-ai.com
 To: vbulatovic1 vasilije.bulatovic3@gmail.com
-Date: Apr 23, 2025, 8:32 PM
+Date: May 1, 2025, 8:32 PM
 Subject: The Future of AI: Insights from Industry Leaders
 Mailed-by: innovate-ai.com
 Signed-by: innovate-ai.com

@@ -1,13 +1,44 @@
 import requests
 from datetime import datetime, timedelta
 import re
+import os
+from dotenv import load_dotenv
 
+load_dotenv(dotenv_path='config.env')
+api_key = os.getenv('API_KEY')
 
-api_key = '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'
+if not api_key:
+    print("Error: API key is not set in the config.env file")
+    exit()
 
 
 input_file_path = 'email.txt'
-output_file_path = 'final.txt'
+output_file_path = os.getenv('OUTPUT_FILE')
+prompt_file_path = 'prompt.txt'
+
+
+if not input_file_path.endswith('.txt'):
+    print("Error: The input file must be a .txt file.")
+    exit()
+
+with open(input_file_path, 'r', encoding='utf-8') as file:
+    line_count = sum(1 for line in file)
+    if line_count > 10000:
+        print("Error: The input file '{input_file_path}' exceeds 10,000 lines.")
+        exit()
+
+if not os.path.exists(output_file_path):
+    with open(output_file_path, 'w', encoding='utf-8') as file:
+        file.write("")
+
+
+if not os.path.exists(prompt_file_path):
+    print("Error: The prompt file 'prompt.txt' does not exist.")
+    exit()
+
+
+with open(prompt_file_path, 'r', encoding='utf-8') as prompt_file:
+    prompt_content = prompt_file.read().strip()
 
 
 def is_recent(date_str):
@@ -22,14 +53,12 @@ def is_recent(date_str):
 recent_emails = []
 with open(input_file_path, 'r', encoding='utf-8') as file:
     email_blocks = file.read().split('\n\nBody:')
-
     for block in email_blocks:
         date_match = re.search(r'Date:\s*(.+)', block)
         if date_match:
             date_str = date_match.group(1).strip()
             if is_recent(date_str):
                 recent_emails.append(block.strip())
-
 
 if not recent_emails:
     print("No emails from the last 24 hours.")
@@ -39,43 +68,54 @@ if not recent_emails:
 email_content = '\n\n'.join(recent_emails)
 
 
-
 url = 'https://openrouter.ai/api/v1/chat/completions'
 
+temperature = 0.0  # 0.0 je najbolje za sažimanje
+top_p = 0.1        # Vece vrednosti daju kreativnije odgovore
+frequency_penalty = 0.0  # Fraze koje se ponavljaju
+presence_penalty = 0.0   # Dodavanje Nove Teme
 
 payload = {
-    "model": "nvidia/llama-3.1-nemotron-nano-8b-v1:free",
+    "model": "mistralai/mistral-small-3.1-24b-instruct:free",
     "messages": [
-        {"role": "system", "content": "Here’s what you need to do:- Analyze the content of the provided emails.- Group them by meaningful, relevant topics.- Write a concise, professional summary for each topic in clear, polished business English.- At the end of each topic summary, list the email subjects (or IDs if subjects are not provided) that contributed to that topic.**Format the output like this:**Topic 1: [Topic Title]Summary: [Well-structured, professional, clear summary of this topic based on relevant emails.]Emails Used:- [Email Subject or ID]- [Email Subject or ID]- [Email Subject or ID]Topic 2: [Topic Title]Summary: [Well-structured, professional, clear summary of this topic based on relevant emails.]Emails Used:- [Email Subject or ID]- [Email Subject or ID](…continue for all topics)**Important requirements:**- The summaries must be logically grouped by topics.- The tone should be professional and highly readable.- Avoid including irrelevant details. Add list of senders at the end- Make sure every topic clearly lists the emails it is based on."},
+        {"role": "system", "content": prompt_content},
         {"role": "user", "content": email_content}
-    ]
+    ],
+    "temperature": temperature,
+    "top_p": top_p,
+    "frequency_penalty": frequency_penalty,
+    "presence_penalty": presence_penalty
 }
-
-
 headers = {
     'Authorization': f'Bearer {api_key}',
     'Content-Type': 'application/json'
 }
 
-
 response = requests.post(url, json=payload, headers=headers)
 response_data = response.json()
-# print(response_data)
 
 
 if response.status_code == 200:
-    
     if 'choices' in response_data:
         summarized_content = response_data['choices'][0]['message']['content']
         cleaned_content = summarized_content.replace('*', '').replace('\u2061', '').strip()
-
         
-        with open(output_file_path, 'w', encoding='utf-8') as output_file:
+        current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        log_header = (
+            f"Summary generated on: {current_datetime}\n"
+            f"Number of emails summarized: {len(recent_emails)}\n"
+            "----------------------------------------\n"
+        )
+
+        with open(output_file_path, 'a', encoding='utf-8') as output_file:  # Use 'a' to append
+            output_file.write(log_header)
             output_file.write(cleaned_content)
-        print("Summary saved to final.txt.")
+            output_file.write("\n\n")
+        print("Summary saved to", output_file_path)
     else:
         print("Error: 'choices' key not found in the response.")
         print("Response content:", response_data)
 else:
     print(f"Failed to summarize the email. Status code: {response.status_code}")
-    print("Response text:", response.text) 
+    print("Response text:", response.text)

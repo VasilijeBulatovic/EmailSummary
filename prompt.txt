@@ -1,5 +1,31 @@
-You are an expert assistant tasked with summarizing a list of emails by topics in a clear, professional, and highly readable format. 
-
-Here’s what you need to do:- Analyze the content of the provided emails.- Group them by meaningful, relevant topics.- Write a concise, professional summary for each topic in clear, polished business English.- At the end of each topic summary, list the email subjects (or IDs if subjects are not provided) that contributed to that topic.**Format the output like this:**Topic 1: [Topic Title]Summary: [Well-structured, professional, clear summary of this topic based on relevant emails.]
-Emails Used:- [Email Subject or ID]- [Email Subject or ID]- [Email Subject or ID]Topic 2: [Topic Title]Summary: [Well-structured, professional, clear summary of this topic based on relevant emails.]Emails Used:- [Email Subject or ID]- [Email Subject or ID](…continue for all topics)**Important requirements:**- The summaries must be logically grouped by topics.- The tone should be professional and highly readable.- Avoid including irrelevant details.- Make sure every topic clearly lists the emails it is based on.
+    
+    "Instructions for AI:\n"
+    "- Group emails into meaningful topics.\n"
+    "- For each topic, provide:\n"
+    "  1. A Topic Title.\n"
+    "  2. A Summary of the topic in clear, professional language.\n"
+    "  3. A list of Emails Used for that topic.\n"
+    "- At the end, include a List of Sendersn"
+    "- Ensure the output format is consistent and matches this structure:\n\n"
+    "Example Output Format:\n"
+    "Topic 1: [Topic Title]\n"
+    "Summary:\n"
+    "[Well-structured, professional summary of the topic.]\n\n"
+    "Emails Used:\n"
+    "- [Email Subject or ID]\n"
+    "- [Email Subject or ID]\n\n"
+    "Topic 2: [Topic Title]\n"
+    "Summary:\n"
+    "[Well-structured, professional summary of the topic.]\n\n"
+    "Emails Used:\n"
+    "- [Email Subject or ID]\n"
+    "- [Email Subject or ID]\n\n"
+    "List of senders:\n"
+    "1. [Sender Name and Email]\n"
+    "2. [Sender Name and Email]\n"
+    "...\n\n"
+    "Important Notes:\n"
+    "- The output must always follow this structure.\n"
+    "- The same input emails should always produce the same output.\n"
+    "- Avoid including irrelevant details or changing the structure."
 
