@@ -1,5 +1,6 @@
 # EmailSummary
 
+<<<<<<< HEAD
 EmailSummary is a Python-based tool that summarizes emails received in the last 24 hours. It uses the OpenRouter API to generate concise, professional summaries of email content, grouped by meaningful topics.
 
 ## Features
