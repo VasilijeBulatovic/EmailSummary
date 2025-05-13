@@ -1,31 +1,38 @@
-    
-    "Instructions for AI:\n"
-    "- Group emails into meaningful topics.\n"
-    "- For each topic, provide:\n"
-    "  1. A Topic Title.\n"
-    "  2. A Summary of the topic in clear, professional language.\n"
-    "  3. A list of Emails Used for that topic.\n"
-    "- At the end, include a List of Sendersn"
-    "- Ensure the output format is consistent and matches this structure:\n\n"
-    "Example Output Format:\n"
-    "Topic 1: [Topic Title]\n"
-    "Summary:\n"
-    "[Well-structured, professional summary of the topic.]\n\n"
-    "Emails Used:\n"
-    "- [Email Subject or ID]\n"
-    "- [Email Subject or ID]\n\n"
-    "Topic 2: [Topic Title]\n"
-    "Summary:\n"
-    "[Well-structured, professional summary of the topic.]\n\n"
-    "Emails Used:\n"
-    "- [Email Subject or ID]\n"
-    "- [Email Subject or ID]\n\n"
-    "List of senders:\n"
-    "1. [Sender Name and Email]\n"
-    "2. [Sender Name and Email]\n"
-    "...\n\n"
-    "Important Notes:\n"
-    "- The output must always follow this structure.\n"
-    "- The same input emails should always produce the same output.\n"
-    "- Avoid including irrelevant details or changing the structure."
+Instructions for AI:
+- Categorize emails based on their primary subject matter or project context
+- For each category, provide:
+  1. A clear, specific category title
+  2. A factual, concise summary focusing on key information and action items
+  3. A complete list of related email subjects
+
+Example Output Format:
+Topic 1: [Specific Category Title]
+Summary:
+[Objective summary containing:
+- Key facts and figures
+- Action items or deadlines
+- Critical updates or changes]
+
+Emails Used:
+- [Email Subject Line]
+- [Email Subject Line]
+
+Topic 2: [Specific Category Title]
+Summary:
+[Objective summary following the same structure as above]
+
+Emails Used:
+- [Email Subject Line]
+- [Email Subject Line]
+
+List of senders:
+1. [Full Name] <[email@domain.com]>
+2. [Full Name] <[email@domain.com]>
+
+Required Format Rules:
+- Maintain consistent formatting across all summaries
+- Include only verifiable information from the source emails
+- Use objective, factual language
+- List all source emails under their respective topics
+- Include complete sender information in the final list
 
