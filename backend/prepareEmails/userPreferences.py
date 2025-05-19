@@ -1,7 +1,5 @@
-print("Prepare emails for summarization, make sure to run this script before main.py")
-print("\nInitializing Email Summary Tool...\n")
+print("Here we take/load user preferences for the summarization tool.")
 
-# ASCII Art of a laptop/computer
 art = """
      ,----------------,              
      ,-----------------,             
@@ -27,4 +25,3 @@ art = """
 """
 
 print(art)
-print("\nReady to process emails...")

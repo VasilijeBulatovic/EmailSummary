@@ -19,6 +19,7 @@ EmailSummary is a Python-based tool that summarizes emails received in the last 
 - The following Python libraries:
   - `requests`
   - `python-dotenv`
+- Run pip install -r requirements.txt in the EmailSummary/backend
 
 ## Installation
 
@@ -33,3 +34,12 @@ EmailSummary is a Python-based tool that summarizes emails received in the last 
       and OUTPUT_FILE = YOUR_OUTPUT_FILE_NAME
 
 Ensure that the `email.txt` and `prompt.txt` are present in the project
+
+
+# Emails folder holds list of emails used in this example 
+
+# PrepareEmails exstracts important info from list of emails based on user preferences, after that they are sent to ai for further summary
+
+# FormatSummarizedEmails cleans the response from ai (openRouter in this case), removes *,#,@ ...
+
+# PromptSettings is used to adjust response from ai (openRouter in this case) so it is reliable and accurate every time.
