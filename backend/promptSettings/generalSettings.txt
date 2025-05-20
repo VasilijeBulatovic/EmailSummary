@@ -1,0 +1,31 @@
+
+    # Language settings
+    LANGUAGE = "english"
+    TONE = "professional"
+    MAX_SUMMARY_LENGTH = 500
+    
+    # Categorization settings
+    MIN_EMAILS_PER_CATEGORY = 1
+    MAX_CATEGORIES = 10
+    
+    # Output formatting
+    INCLUDE_TIMESTAMPS = True
+    INCLUDE_SENDER_LIST = True
+    USE_BULLET_POINTS = True
+    
+    # Priority settings
+    HIGHLIGHT_URGENT = True
+    URGENT_KEYWORDS = ["urgent", "asap", "deadline", "important"]
+    
+    # Topic organization
+    PREDEFINED_CATEGORIES = [
+        "Project Updates",
+        "Meeting Notes",
+        "Technical Issues",
+        "Administrative",
+        "Client Communication",
+        "Artificial Inteligence",
+    ]
+
+    # Date formatting
+    DATE_FORMAT = "%Y-%m-%d %H:%M"
